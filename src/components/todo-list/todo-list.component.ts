@@ -5,16 +5,16 @@ import { utilitiesService } from '../../services/utilities.service';
 
 export class TodoList extends HTMLElement {
 
-    todoLists: Array<TodoItem>;
+    todoList: Array<TodoItem>;
     root: ShadowRoot;
 
     constructor() {
         super();
         this.root = this.attachShadow({mode: 'open'});
+        this.todoList = [];
     }
 
     connectedCallback() {
-        this.todoLists = [];
         this.render();
     }
 
@@ -22,12 +22,12 @@ export class TodoList extends HTMLElement {
         render(template(this), this.root);
     }
 
-    addNewList(e:Event) {
+    addNewList() {
         const newList: TodoItem = {
             title: 'untitled', 
             id: utilitiesService.getUuid()
         }
-        this.todoLists.push(newList);
+        this.todoList.push(newList);
         this.render();
     }
 
