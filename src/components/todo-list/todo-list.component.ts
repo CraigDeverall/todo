@@ -1,20 +1,20 @@
 import { render } from 'lit-html';
 import { template } from './todo-list.template';
 import { TodoItem } from '../../interfaces';
-import { utilitiesService } from '../../services/utilities.service';
+import { todoListService } from '../../services/todo-list.service';
 
 export class TodoList extends HTMLElement {
 
-    todoLists: Array<TodoItem>;
+    todoList: Array<TodoItem>;
     root: ShadowRoot;
 
     constructor() {
         super();
         this.root = this.attachShadow({mode: 'open'});
+        this.todoList = todoListService.todoList;
     }
 
     connectedCallback() {
-        this.todoLists = [];
         this.render();
     }
 
@@ -22,12 +22,13 @@ export class TodoList extends HTMLElement {
         render(template(this), this.root);
     }
 
-    addNewList(e:Event) {
-        const newList: TodoItem = {
-            title: 'untitled', 
-            id: utilitiesService.getUuid()
-        }
-        this.todoLists.push(newList);
+    addNewList() {
+        todoListService.addItem('untitled');
+        this.render();
+    }
+
+    removeItem(item: TodoItem) {
+        todoListService.removeItem(item);
         this.render();
     }
 

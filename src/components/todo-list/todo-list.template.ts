@@ -9,11 +9,14 @@ export function template(ctrl: TodoList): TemplateResult {
           <h2>Things To Do:</h2>
           <button @click="${ctrl.addNewList.bind(ctrl)}">Add New Todo Item</button>
           <div>
-            ${ctrl.todoLists.map(list => { 
+            ${ctrl.todoList.map(item => { 
               return html`
               <div>
-                <span>${list.title}</span>
-                <span>${list.id}</span>
+                <span>${item.title}</span>
+                <span>${item.id}</span>
+                <button @click="${{
+                  handleEvent: () => { ctrl.removeItem(item)} 
+                }}">Remove</button>
               </div>
             `})}
           </div>
