@@ -40,16 +40,8 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    'to-string-loader',
-                    { loader: 'css-loader', options: { sourceMap: true } },
-                    { loader: 'sass-loader', options: { sourceMap: true } }
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'to-string-loader',
-                    { loader: 'css-loader', options: { sourceMap: true } }
+                    {loader: 'raw-loader'},
+                    {loader: 'sass-loader', options: {sourceMap: true} }
                 ]
             }
         ]
