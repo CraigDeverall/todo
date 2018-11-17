@@ -1,5 +1,5 @@
 import { Router } from '@vaadin/router';
-import { MainView } from './components/main-view.component';
+import { MainView } from './components/main-view/main-view.component';
 
 // define custom-elements
 customElements.define('main-view', MainView);
@@ -14,4 +14,4 @@ const router = new Router(outletElement, {});
 router.setRoutes([
     { path: '/', component: 'main-view' }
 ]);
-console.log(router);
+
