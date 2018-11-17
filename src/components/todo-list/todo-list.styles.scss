@@ -1,4 +1,8 @@
-// Showing here how global css styles don't leak out of the shadowDom (ie app title isnt affected)
-* {
-    color:blueviolet;
+
+.completed {
+    color: green;
+}
+
+.not-completed {
+    color: orange;
 }

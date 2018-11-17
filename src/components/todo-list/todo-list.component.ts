@@ -32,4 +32,14 @@ export class TodoList extends HTMLElement {
         this.render();
     }
 
+    completeItem(item: TodoItem) {
+        todoListService.setCompleted(item, true);
+        this.render();
+    }
+
+    openItem(item: TodoItem) {
+        todoListService.setCompleted(item, false);
+        this.render();
+    }
+
 }
