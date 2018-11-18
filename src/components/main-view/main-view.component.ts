@@ -10,7 +10,7 @@ export class MainView extends HTMLElement {
     }
 
     connectedCallback() {
-        this.appTitle = 'Craig and Jesses\' amazing TODO app';
+        this.appTitle = 'The amazing vanilla TODO application. #webComponentsRule';
         this.render();
     }
 
