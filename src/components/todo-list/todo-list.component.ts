@@ -1,7 +1,8 @@
 import { render } from 'lit-html';
 import { template } from './todo-list.template';
 import { TodoItem } from '../../interfaces';
-import { todoListService } from '../../services/todo-list.service';
+import { todoListService } from './todo-list.service';
+import { store } from '../../state/store';
 
 export class TodoList extends HTMLElement {
 
@@ -11,7 +12,9 @@ export class TodoList extends HTMLElement {
     constructor() {
         super();
         this.root = this.attachShadow({mode: 'open'});
-        this.todoList = todoListService.todoList;
+        store.subscribe(() => {
+            this.todoList = store.getState().todoList;
+        })
     }
 
     connectedCallback() {

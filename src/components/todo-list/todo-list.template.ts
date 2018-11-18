@@ -9,7 +9,9 @@ export function template(ctrl: TodoList): TemplateResult {
           <h2>Things To Do:</h2>
           <button @click="${ctrl.addNewList.bind(ctrl)}">Add New Todo Item</button>
           <div>
-            ${ctrl.todoList
+            ${
+              ctrl.todoList ?
+              ctrl.todoList
             .sort((a,b) => {
               if (!a.completed && b.completed) {
                 return -1;
@@ -41,7 +43,7 @@ export function template(ctrl: TodoList): TemplateResult {
                   handleEvent: () => { ctrl.removeItem(item) } 
                 }}">Remove</button>
               </div>
-            `})}
+            `}) : ''}
           </div>
         </div>
        `;

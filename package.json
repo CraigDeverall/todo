@@ -4,9 +4,12 @@
   "description": "Proving we dont need a framework in 2019",
   "main": "webpack.config.js",
   "dependencies": {
+    "@types/redux-actions": "^2.3.1",
     "@vaadin/router": "^1.2.0",
     "html-webpack-plugin": "^3.2.0",
     "lit-html": "^0.13.0",
+    "redux": "^4.0.1",
+    "rxjs": "^6.3.3",
     "webpack": "^4.25.1",
     "webpack-dev-server": "^3.1.10"
   },
