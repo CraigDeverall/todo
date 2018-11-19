@@ -21,4 +21,3 @@ router.setRoutes([
     }
 ]);
 
-// Setup Redux store
