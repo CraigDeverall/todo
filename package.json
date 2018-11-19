@@ -47,6 +47,17 @@
   },
   "homepage": "https://github.com/CraigDeverall/todo#readme",
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**.*{ts}",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
+    "coverageDirectory": "./dist/coverage"
+    
   }
 }
