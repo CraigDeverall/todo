@@ -8,6 +8,8 @@ export class TodoList extends HTMLElement {
 
     todoList: Array<TodoItem>;
     root: ShadowRoot;
+    newTodoModalVisible = false;
+    newTodoTitle = '';
 
     constructor() {
         super();
@@ -25,8 +27,23 @@ export class TodoList extends HTMLElement {
         render(template(this), this.root);
     }
 
-    addNewList() {
-        todoListService.addItem('untitled');
+    setNewTodoTitle(e: KeyboardEvent, ctrl: TodoList) {
+        if (e.keyCode === 13) { 
+            ctrl.addNewItem();
+            return;
+        }
+        ctrl.newTodoTitle = (e.target as HTMLInputElement).value;
+    }
+
+    openNewTodoModal() {
+        this.newTodoModalVisible = true;
+        this.render();
+    }
+
+    addNewItem() {
+        todoListService.addItem(this.newTodoTitle);
+        this.newTodoTitle = '';
+        this.newTodoModalVisible = false;
         this.render();
     }
 
